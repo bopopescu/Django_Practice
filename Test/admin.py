@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from Test.models import Division, IndustryTypeMaster, IndustryTypeSlave, CompanyInfo, District, Thana
+from Test.models import Division, IndustryTypeMain, IndustryTypeSubordinate, CompanyInfo, District, Thana
 
 
 class DivisionAdmin(admin.ModelAdmin):
@@ -25,22 +25,22 @@ class ThanaAdmin(admin.ModelAdmin):
 admin.site.register(Thana, ThanaAdmin)
 
 
-class IndustryTypeMasterAdmin(admin.ModelAdmin):
+class IndustryTypeMainAdmin(admin.ModelAdmin):
     list_display = ['name']
 
 
-admin.site.register(IndustryTypeMaster, IndustryTypeMasterAdmin)
+admin.site.register(IndustryTypeMain, IndustryTypeMainAdmin)
 
 
-class IndustryTypeSlaveAdmin(admin.ModelAdmin):
-    list_display = ['name', 'industrytypemaster']
+class IndustryTypeSubordinateAdmin(admin.ModelAdmin):
+    list_display = ['name', 'industrytypemain']
 
 
-admin.site.register(IndustryTypeSlave, IndustryTypeSlaveAdmin)
+admin.site.register(IndustryTypeSubordinate, IndustryTypeSubordinateAdmin)
 
 
 class CompanyInfoAdmin(admin.ModelAdmin):
-    list_display = ['company_name', 'country', 'division', 'get_industrytypeslave', 'user']
+    list_display = ['company_name', 'country', 'division', 'get_industrytypesubordinate', 'user']
 
 
 admin.site.register(CompanyInfo, CompanyInfoAdmin)

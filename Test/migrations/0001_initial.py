@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='IndustryTypeMaster',
+            name='IndustryTypeMain',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=200)),
@@ -44,11 +44,11 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='IndustryTypeSlave',
+            name='IndustryTypeSubordinate',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=200)),
-                ('industrytypemaster', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Test.IndustryTypeMaster')),
+                ('industrytypemain', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Test.IndustryTypeMain')),
             ],
         ),
         migrations.AddField(
@@ -63,7 +63,7 @@ class Migration(migrations.Migration):
                 ('company_name', models.CharField(blank=True, default=None, max_length=200)),
                 ('country', models.CharField(max_length=200)),
                 ('division', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Test.Division')),
-                ('industrytypeslave', models.ManyToManyField(to='Test.IndustryTypeSlave')),
+                ('industrytypesubordinate', models.ManyToManyField(to='Test.IndustryTypeSubordinate')),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),

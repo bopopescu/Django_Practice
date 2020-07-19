@@ -7,7 +7,7 @@ from django.db import transaction
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 
-from Test.models import CompanyInfo, IndustryTypeSlave, IndustryTypeMaster, Division
+from Test.models import CompanyInfo, IndustryTypeSubordinate, IndustryTypeMain, Division
 
 
 @csrf_exempt
@@ -40,14 +40,14 @@ def Registration(request):
         company_name = request.POST.get('company_name')
         country = request.POST.get('country')
         # division = request.POST.get('division')
-        industrytypeslave = request.POST.get('industrytypeslave')
+        industrytypesubordinate = request.POST.get('industrytypesubordinate')
 
         # company info creation
         company_info = CompanyInfo.objects.create(
             company_name=company_name,
             country=country,
             division=division,
-            industrytypeslave=industrytypeslave,
+            industrytypesubordinate=industrytypesubordinate,
             user=user
         )
         return JsonResponse(user_data, safe=False)
